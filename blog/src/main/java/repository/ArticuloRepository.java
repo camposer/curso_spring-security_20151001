@@ -15,5 +15,5 @@ public interface ArticuloRepository
 	List<Articulo> findByTitulo(String titulo);
 	
 	@Query("from Articulo a where a.fecha >= :fecha")
-	List<Articulo> findGreaterThanCreatedAt(@Param("fecha") Date fecha);
+	List<Articulo> findGreaterThanFecha(@Param("fecha") Date fecha);
 }

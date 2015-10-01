@@ -28,6 +28,3 @@ public class ArticuloRepositoryTest {
 		Assert.assertNotNull(a.getId());
 	}
 }
-
-
-

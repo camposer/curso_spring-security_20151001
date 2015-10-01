@@ -17,25 +17,24 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories("repository")
 @EnableTransactionManagement
 public class DatabaseConfig {
-    @Value("${db.driverClassName}")
-    private String dbDriverClassName;
-    @Value("${db.url}")
-    private String dbUrl;
-    @Value("${db.username}")
-    private String dbUsername;
-    @Value("${db.password}")
-    private String dbPassword;
+	@Value("${db.driverClassName}")
+	private String dbDriverClassName;
+	@Value("${db.url}")
+	private String dbUrl;
+	@Value("${db.username}")
+	private String dbUsername;
+	@Value("${db.password}")
+	private String dbPassword;
 
-    @Bean
-    public DriverManagerDataSource dataSource() {
-            DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-            driverManagerDataSource.setDriverClassName(dbDriverClassName);
-            driverManagerDataSource.setUrl(dbUrl);
-            driverManagerDataSource.setUsername(dbUsername);
-            driverManagerDataSource.setPassword(dbPassword);
-            return driverManagerDataSource;
-    }
-
+	@Bean
+	public DriverManagerDataSource dataSource() {
+		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+		driverManagerDataSource.setDriverClassName(dbDriverClassName);
+		driverManagerDataSource.setUrl(dbUrl);
+		driverManagerDataSource.setUsername(dbUsername);
+		driverManagerDataSource.setPassword(dbPassword);
+		return driverManagerDataSource;
+	}
 
 	@Bean
 	public EntityManagerFactory entityManagerFactory() {
@@ -47,7 +46,6 @@ public class DatabaseConfig {
 		factory.setJpaVendorAdapter(vendorAdapter);
 		factory.setPackagesToScan("model");
 		factory.setDataSource(dataSource());
-		//factory.setJpaDialect(new HibernateJpaDialect());
 		factory.afterPropertiesSet();
 
 		return factory.getObject();
