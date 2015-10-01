@@ -24,11 +24,7 @@ Cómo configurar Derby
 
 5.- Clic derecho sobre la conexión: Open SQL Scrapbook
 
-6.- Ejecutar script SQL:
-CREATE TABLE test(nombre VARCHAR(50));
-INSERT INTO test VALUES('hola');
-INSERT INTO test VALUES('hola');
-SELECT * FROM test;
+6.- Ejecutar script SQL sql/blogdb.sql
 
 Para ejecutar: Seleccionar el texto deseado, clic derecho: Execute selected text
 
