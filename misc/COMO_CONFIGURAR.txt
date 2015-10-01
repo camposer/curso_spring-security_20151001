@@ -1,0 +1,23 @@
+Cómo configurar proxy Maven
+===========================
+
+1.- Configurar proxy MAVEN
+	- Añadir el fichero settings.xml
+<settings>
+  <proxies>
+   <proxy>
+      <active>true</active>
+      <protocol>http</protocol>
+      <host>proxy.company.com</host>
+      <port>8080</port>
+      <username>XXXX</username>
+      <password>XXXX</password>
+    </proxy>
+  </proxies>
+</settings>
+
+	- Ir a Window -> Preferences -> Maven -> User settings y seleccionar el archivo. Hacer clic en "Update settings"
+
+2.- Clic derecho sobre el proyecto y hacer Maven -> Update project (seleccionar force update)
+
+
