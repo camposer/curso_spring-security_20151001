@@ -15,6 +15,7 @@ Cómo configurar Derby
 		C:\DERBY_HOME\lib\derbyclient.jar
 
 4.- Colocar los siguientes parámetros de configuración:
+	Database: blogdb
 	User: user
 	Password: 123
 	(Save database password)
