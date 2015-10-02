@@ -1,12 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
-    http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+          http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
-    <context:annotation-config/><!-- Habilita el uso de anotaciones -->
-    <context:component-scan base-package="config.security"/>
-</beans>
+	<http auto-config="true" use-expressions="true">
+		<intercept-url pattern="/articulos/admin**" access="hasRole('ADMIN')" />
+		<intercept-url pattern="admin**" access="hasRole('ADMIN')" />
+		<form-login
+		    username-parameter="usuario"
+		    password-parameter="clave"
+		    login-processing-url="/autenticar"
+		    login-page="/login.do"/>
+		<remember-me key="recuerdame"/>
+		
+		<csrf/>
+		<headers/>
+	</http>
+
+	<global-method-security/>
+	
+	<authentication-manager>
+		<authentication-provider>
+<!-- 			<user-service>
+				<user name="user" password="123456" authorities="ROLE_USER" />
+				<user name="admin" password="123456" authorities="ROLE_USER, ROLE_ADMIN" />
+				<user name="root" password="123456" authorities="ROLE_USER, ROLE_ADMIN, ROLE_INFO" />
+			</user-service>
+ -->	
+ 			<password-encoder hash="sha"/>
+ 			<jdbc-user-service data-source-ref="dataSource"
+ 			    	users-by-username-query="select nombre_usuario as username, clave as password, true as enabled from usuario where nombre_usuario = ? and estatus = 'ACTIVO'"
+ 			    	authorities-by-username-query="select nombre_usuario as username, r.nombre as authority from rol r inner join usuario u on r.usuario_id = u.id where u.nombre_usuario = ?"/>
+			
+ 		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>
