@@ -29,6 +29,7 @@ INSERT INTO usuario(nombre_usuario, clave, estatus)
 VALUES('admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'ACTIVO');
 
 -- select nombre_usuario as u.username, r.nombre as authority from rol r inner join usuario u on r.usuario_id = u.id where u.nombre_usuario = ?
+select nombre_usuario as username, r.nombre as authority from rol r inner join usuario u on r.usuario_id = u.id where u.nombre_usuario = 'admin'
 CREATE TABLE rol(
 	id INTEGER NOT NULL 
 		GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),

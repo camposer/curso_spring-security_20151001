@@ -12,8 +12,10 @@
 	<div>
 		<p>Adminitración de artículos...</p>
 	</div>
-	
+
 	<c:url var="inicioUrl" value="/articulos.do"/>
 	<a href="${inicioUrl}">Inicio</a>
+	<c:url var="logoutUrl" value="/logout.do"/>
+	<a href="${logoutUrl}">Salir</a>	
 </body>
 </html>

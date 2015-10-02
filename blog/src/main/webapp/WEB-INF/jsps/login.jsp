@@ -25,10 +25,12 @@
 			<label for="password">Contraseña</label>
 			<input type="password" name="clave" />
 		</p>
-<%-- 		<input type="hidden"
-		name="${_csrf.parameterName}"
-			value="${_csrf.token}" />
- --%>		<button type="submit" class="btn">Entrar</button>
+		<p>
+			<input type="checkbox" name="remember-me" />
+			Recuérdame
+		</p>
+ 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<button type="submit" class="btn">Entrar</button>
 	</form>
 </body>
 </html>

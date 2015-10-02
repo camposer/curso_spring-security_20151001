@@ -3,9 +3,12 @@ package config.security;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -13,11 +16,18 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private static final String USERS_BY_USERNAME_QUERY = "select nombre_usuario as username, clave as password, true as enabled from usuario where nombre_usuario = ? and estatus = 'ACTIVO'";
 	private static final String AUTHORITIES_BY_USERNAME_QUERY = "select nombre_usuario as username, r.nombre as authority from rol r inner join usuario u on r.usuario_id = u.id where u.nombre_usuario = ?";
 	@Autowired
 	private DataSource dataSource;
+	
+	@Override
+	@Bean
+	protected AuthenticationManager authenticationManager() throws Exception {
+		return super.authenticationManager();
+	}
 	
 	class CustomAuthenticationProvider implements AuthenticationProvider {
 
@@ -59,8 +69,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.usernameParameter("usuario")
 				.passwordParameter("clave") 
 				.loginProcessingUrl("/autenticar") // Recibe parámetros por POST
-				.loginPage("/login.do"); // Página de login
-	}	
+				.loginPage("/login.do") // Página de login
+				.and()
+			.rememberMe()
+				.key("recuerdame");
+	}
 }
 
 
