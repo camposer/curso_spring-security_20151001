@@ -26,5 +26,8 @@
 	</div>
 	<c:url var="adminUrl" value="/articulos/admin.do"/>
 	<a href="${adminUrl}">Admin</a>
+	<c:url var="logoutUrl" value="/logout.do"/>
+	<a href="${logoutUrl}">Salir</a>	
+	
 </body>
 </html>

@@ -16,7 +16,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private static final String USERS_BY_USERNAME_QUERY = "select nombre_usuario as username, clave as password, true as enabled from usuario where nombre_usuario = ? and estatus = 'ACTIVO'";
 	private static final String AUTHORITIES_BY_USERNAME_QUERY = "select nombre_usuario as username, r.nombre as authority from rol r inner join usuario u on r.usuario_id = u.id where u.nombre_usuario = ?";

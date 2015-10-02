@@ -27,6 +27,8 @@ INSERT INTO usuario(nombre_usuario, clave, estatus)
 VALUES('user', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'ACTIVO');
 INSERT INTO usuario(nombre_usuario, clave, estatus)
 VALUES('admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'ACTIVO');
+INSERT INTO usuario(nombre_usuario, clave, estatus)
+VALUES('root', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'ACTIVO');
 
 -- select nombre_usuario as u.username, r.nombre as authority from rol r inner join usuario u on r.usuario_id = u.id where u.nombre_usuario = ?
 select nombre_usuario as username, r.nombre as authority from rol r inner join usuario u on r.usuario_id = u.id where u.nombre_usuario = 'admin'
@@ -41,3 +43,6 @@ CREATE TABLE rol(
 INSERT INTO rol(usuario_id, nombre) VALUES(1, 'ROLE_USER');
 INSERT INTO rol(usuario_id, nombre) VALUES(2, 'ROLE_USER');
 INSERT INTO rol(usuario_id, nombre) VALUES(2, 'ROLE_ADMIN');
+INSERT INTO rol(usuario_id, nombre) VALUES(3, 'ROLE_USER');
+INSERT INTO rol(usuario_id, nombre) VALUES(3, 'ROLE_ADMIN');
+INSERT INTO rol(usuario_id, nombre) VALUES(3, 'ROLE_INFO');
