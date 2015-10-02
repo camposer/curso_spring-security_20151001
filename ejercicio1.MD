@@ -14,6 +14,8 @@ Ver: http://docs.spring.io/spring-security/site/docs/4.0.3.CI-SNAPSHOT/reference
 
 5.- Cambiar enlace de cerrar sesión por logout (probar que funciona)
 
+Ver: http://docs.spring.io/spring-security/site/docs/4.0.0.M2/reference/htmlsingle/#csrf-logout
+
 6.- Agregar opción de remember-me 
 
 7.- Securizar el método ArticuloService.obtenerArticulos()
