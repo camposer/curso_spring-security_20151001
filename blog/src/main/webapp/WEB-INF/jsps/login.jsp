@@ -18,12 +18,12 @@
 		<p>Te has salido del sistema</p>
 		</c:if>
 		<p>
-			<label for="username">Usuario</label> <input type="text"
-				id="username" name="username" />
+			<label for="username">Usuario</label>
+			<input type="text" name="usuario" />
 		</p>
 		<p>
-			<label for="password">Contraseña</label> <input type="password"
-				id="password" name="password" />
+			<label for="password">Contraseña</label>
+			<input type="password" name="clave" />
 		</p>
 <%-- 		<input type="hidden"
 		name="${_csrf.parameterName}"
